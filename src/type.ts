@@ -7,8 +7,8 @@ export type ImgCardData = {
 }
 
 export type User = {
-    username: string;
+    username?: string;
     password: string;
-    user_id: string;
-    nickname: string;
+    userId: string;
+    nickname?: string;
 }

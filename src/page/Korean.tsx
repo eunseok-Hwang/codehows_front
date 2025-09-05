@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { getBoards } from "../api/boardApi";
 import type { ImgCardData } from "../type";
 import ImgCard from "../componuent/Card";
+import { useNavigate } from "react-router-dom";
 
 export default function Korean() {
     const [data, setData] = useState<ImgCardData[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getBoards("KR").then(res => setData(res))
@@ -20,6 +22,7 @@ export default function Korean() {
                                 title={d.title}
                                 content={d.contents}
                                 img={d.img}
+                                onClick={() => navigate(`/post/${d.id}`)}
                             />
                         )
                     })}

@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Signup() {
+    const navigate = useNavigate();
     const [user, setUser] = useState<User>({
         username: "",
         password: "",
-        user_id: "",
+        userId: "",
         nickname: ""
     });
 
@@ -21,7 +22,6 @@ export default function Signup() {
         postMember(user);
         navigate("/");
     };
-    const navigate = useNavigate();
 
     return (
         <>
