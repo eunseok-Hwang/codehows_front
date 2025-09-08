@@ -28,7 +28,7 @@ export default function Signup() {
             <Stack spacing={2} mt={2} alignItems="center">
                 <TextField
                     label="ID"
-                    name="user_id"
+                    name="userId"
                     onChange={handleChange}
                 />
 

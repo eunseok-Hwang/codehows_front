@@ -8,6 +8,11 @@ import Korean from './page/Korean';
 import Signup from './page/Signup';
 import Login from './page/Login';
 import { useAuthState } from './store';
+import Chinese from './page/Chinese';
+import Japanese from './page/Japanese';
+import West from './page/West';
+import Addpage from './page/Addpage';
+import ContentPage from './page/ContentPage';
 
 function a11yProps(index: number) {
   return {
@@ -35,6 +40,10 @@ function App() {
   const navigateMain = () => {
     setValue(-1);
     navigate("/");
+  }
+
+  const handelOpen = () => {
+    navigate('/board/post');
   }
 
   useEffect(() => {
@@ -71,6 +80,9 @@ function App() {
             <Tab label="중식" {...a11yProps(2)} />
             <Tab label="일식" {...a11yProps(3)} />
             <Tab label="양식" {...a11yProps(4)} />
+            {isAuthenticated && (
+              <Button color='inherit' onClick={handelOpen}>새 게시글</Button>
+            )}
           </Tabs>
           {/* <Tabs>
           <Tab label="한식" />
@@ -102,6 +114,11 @@ function App() {
         <Route path='/korean-food' element={<Korean />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/chinese-food' element={<Chinese />} />
+        <Route path='/japanese-food' element={<Japanese />} />
+        <Route path='/western-food' element={<West />} />
+        <Route path='/board/post' element={<Addpage />} />
+        <Route path='/boards/:id' element={<ContentPage />} />
       </Routes>
 
 

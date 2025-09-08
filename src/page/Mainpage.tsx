@@ -33,11 +33,10 @@ export default function Mainpage() {
                                 title={d.title}
                                 content={d.contents}
                                 img={d.img}
-                                onClick={() => navigate(`/post/${d.id}`)}
+                                onClick={() => navigate(`/boards/${d.id}`)}
                             />
                         )
                     })
-
                     }
                 </div>
             </div>

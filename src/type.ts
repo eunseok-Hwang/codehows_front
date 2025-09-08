@@ -12,3 +12,10 @@ export type User = {
     userId: string;
     nickname?: string;
 }
+
+export type Board = {
+    title: string;
+    contents: string;
+    img: string;
+    type: string;
+}

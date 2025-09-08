@@ -12,3 +12,22 @@ export const getBoards = async (type: string): Promise<ImgCardData[]> => {
     });
     return response.data;
 }
+
+export const postBoards = async (type: FormData) => {
+    const jwt = sessionStorage.getItem('jwt');
+    const response = await axios.post(`${BASE_URL}/boards/post`, type, {
+        headers: {
+            Authorization: jwt
+        }
+    })
+    return response.data
+}
+
+export const getBoardId = async (id: number): Promise<ImgCardData> => {
+    const response = await axios.get(`${BASE_URL}/boards/${id}`, {
+        headers: {
+            Authorization: sessionStorage.getItem("jwt")
+        }
+    });
+    return response.data;
+}
