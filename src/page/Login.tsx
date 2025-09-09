@@ -19,10 +19,11 @@ export default function Login() {
 
     const handleLogin = () => {
         getAuthToken(user)
-            .then((token) => {
+            .then((res) => {
+                const [token, userInfo] = res;
                 if (token != null) {
                     sessionStorage.setItem("jwt", token);
-                    login();
+                    login(userInfo);
                     navigate("/");
                 }
             })
@@ -45,6 +46,7 @@ export default function Login() {
                 <TextField
                     label="PW"
                     name="password"
+                    autoComplete="current-password"
                     onChange={handleChange}
                 />
                 <Button

@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { User } from "../type";
+import type { UserInfo } from "../store";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -10,5 +11,7 @@ export const postMember = async (user: User): Promise<void> => {
 
 export const getAuthToken = async (user: User) => {
     const response = await axios.post(`${BASE_URL}/member/login`, user)
-    return response.headers.authorization;
+    const token = response.headers.authorization;
+    const userInfo: UserInfo = response.data;
+    return [token, userInfo];
 }

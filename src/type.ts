@@ -14,8 +14,15 @@ export type User = {
 }
 
 export type Board = {
+    id?: number;
     title: string;
     contents: string;
     img: string;
     type: string;
+}
+
+export type Comment = {
+    board_id: number;
+    nickname?: string;
+    comment: string;
 }
