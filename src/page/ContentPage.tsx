@@ -81,6 +81,7 @@ export default function ContentPage() {
     return (
         <>
             <Container maxWidth="sm">
+                {/* 삭제버튼 */}
                 <Box display="flex" justifyContent="space-between" alignItems="center" sx={{ mt: 2 }}>
                     <Typography variant="h4">{board.title}</Typography>
                     {isAuthenticated && (
@@ -93,11 +94,9 @@ export default function ContentPage() {
                         </Button>
                     )}
                 </Box>
-                <Typography variant="body1" sx={{ marginY: 2 }}>{board.contents}</Typography>
                 <img src={`${BASE_URL}${board.img}`} alt="게시글 이미지" style={{ width: "100%" }} />
-
+                <Typography variant="body1" sx={{ marginY: 2 }}>{board.contents}</Typography>
                 <Typography variant="h6" sx={{ mt: 4 }}>댓글:</Typography>
-
                 {/* 댓글 입력 폼 */}
                 {isAuthenticated ? (
                     <Box display="flex" flexDirection="column" gap={2}>

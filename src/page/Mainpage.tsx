@@ -31,7 +31,7 @@ export default function Mainpage() {
                             <ImgCard
                                 key={d.id}
                                 title={d.title}
-                                content={d.contents}
+                                content={d.contents.length > 20 ? `${d.contents.slice(0, 20)}...` : d.contents}
                                 img={d.img}
                                 onClick={() => navigate(`/boards/${d.id}`)}
                             />
