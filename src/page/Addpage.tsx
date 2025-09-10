@@ -88,6 +88,17 @@ export default function AddPage() {
                             onChange={handleFileChange}
                         />
                     </Button>
+                    {selectedFiles.length > 0 && (
+                        <Box>
+                            <Typography variant="subtitle2">업로드된 파일:</Typography>
+                            <ul>
+                                {selectedFiles.map((file, index) => (
+                                    <li key={index}>{file.name}</li>
+                                ))}
+                            </ul>
+                        </Box>
+                    )}
+
                     <Typography variant="subtitle1">게시글 분류 선택</Typography>
                     <RadioGroup
                         value={selectedType}

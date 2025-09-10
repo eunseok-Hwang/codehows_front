@@ -31,3 +31,13 @@ export const getBoardId = async (id: number): Promise<ImgCardData> => {
     });
     return response.data;
 }
+
+export const deleteBoard = async (id: number): Promise<number> => {
+    const jwt = sessionStorage.getItem('jwt');
+    const response = await axios.delete(`${BASE_URL}/boards/${id}`, {
+        headers: {
+            Authorization: jwt
+        }
+    });
+    return response.data;
+}

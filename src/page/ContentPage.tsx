@@ -2,7 +2,7 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import type { Board, Comment } from "../type";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getBoardId, } from "../api/boardApi";
+import { deleteBoard, getBoardId, } from "../api/boardApi";
 import { useAuthState } from "../store";
 import { getComments, postComment } from "../api/commentApi";
 
@@ -34,6 +34,23 @@ export default function ContentPage() {
         }
     };
 
+    const handleDelete = async () => {
+        if (!id) return;
+
+        const confirmDelete = window.confirm("정말로 이 게시글을 삭제하시겠습니까?");
+        if (!confirmDelete) return;
+
+        try {
+            await deleteBoard(Number(id));
+            alert("게시글이 삭제되었습니다.");
+            window.location.href = "/"; // 홈으로 리디렉션
+        } catch (error) {
+            alert("삭제 실패");
+            console.error(error);
+        }
+
+    }
+
     useEffect(() => {
         if (id) {
             fetchBoardData();
@@ -64,7 +81,18 @@ export default function ContentPage() {
     return (
         <>
             <Container maxWidth="sm">
-                <Typography variant="h4">{board.title}</Typography>
+                <Box display="flex" justifyContent="space-between" alignItems="center" sx={{ mt: 2 }}>
+                    <Typography variant="h4">{board.title}</Typography>
+                    {isAuthenticated && (
+                        <Button
+                            variant="outlined"
+                            color="error"
+                            onClick={handleDelete}
+                        >
+                            삭제
+                        </Button>
+                    )}
+                </Box>
                 <Typography variant="body1" sx={{ marginY: 2 }}>{board.contents}</Typography>
                 <img src={`${BASE_URL}${board.img}`} alt="게시글 이미지" style={{ width: "100%" }} />
 
