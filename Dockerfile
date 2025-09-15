@@ -9,4 +9,4 @@ FROM nginx:stable-alpain
 COPY --from=build /app/dist /user/shar/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
-CMD ["nginx", "-g", "deamon off;"]
+CMD ["nginx", "-g", "daemon off;"]
