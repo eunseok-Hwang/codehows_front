@@ -27,7 +27,7 @@ function App() {
   const [value, setValue] = useState<number>(-1);
   const navigate = useNavigate();
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_e: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 

@@ -19,7 +19,7 @@ export default function Mainpage() {
         //     })
         getBoards("ALL")
             .then(res => setData(res))
-            .catch(err => setData([]));
+        // .catch(e => setData([]));
     }, [isAuthenticated])
 
     return (
